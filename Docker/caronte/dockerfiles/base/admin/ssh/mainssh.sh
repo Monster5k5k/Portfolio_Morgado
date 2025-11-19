@@ -16,7 +16,8 @@ configurar_ssh() {
   service ssh restart
   #exec /usr/sbin/sshd -D & #dejar el ssh en background /(2plano)
   mkdir /home/$USUARIO/.ssh
-  cat /root/admin/base/common/id_ed25519.pub >> /home/$USUARIO/.ssh/authorized_keys
+  cat /root/admin/base/common/id_rsa.pub >> /home/$USUARIO/.ssh/authorized_keys
+
   config_sudoers () {
     if [ -f /etc/sudoers ]
     then
