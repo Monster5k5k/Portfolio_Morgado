@@ -10,7 +10,7 @@ configurar_ssh() {
   # 3. Configurar las claves SSH para el usuario
   if [ ! d /home/$USUARIO/.ssh ]; then
     mkdir -p /home/$USUARIO/.ssh
-    cat /root/datos/id_rsa.pub >> /home/$USUARIO/.ssh/authorized_keys
+    cat /root/admin/base/common/id_rsa.pub >> /home/$USUARIO/.ssh/authorized_keys
   fi
   # 4. Reiniciar el servicio SSH para que se aplique las configuraciones
   service ssh restart

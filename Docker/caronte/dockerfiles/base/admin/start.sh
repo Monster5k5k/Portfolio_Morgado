@@ -9,6 +9,7 @@ main () {
     newUser
     # Función para configurar SSH
     configurar_ssh
+    config_sudoers
     # PARA QUE EL CONTENEDOR NO SE CIERRE
     tail -f /dev/null
 }
