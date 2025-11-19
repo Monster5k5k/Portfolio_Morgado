@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: /home/linas/portfolio/docker/caronte/
+      context: /home/linas/portfolio/Docker/caronte/
       dockerfile: ./dockerfiles/base/ubbase 
      # args: #Variables de DFILE para la construcción de las imagenes 
      #   - USUARIO=linas
