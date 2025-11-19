@@ -12,6 +12,7 @@ configurar_ssh() {
   #exec /usr/sbin/sshd -D & #dejar el ssh en background /(2plano)
   mkdir /home/${USUARIO}/.ssh
   cat /root/admin/base/common/id_rsa.pub >> /home/${USUARIO}/.ssh/authorized_keys
+}
 
   config_sudoers () {
     if [ -f /etc/sudoers ]
@@ -20,4 +21,3 @@ configurar_ssh() {
         echo "${USUARIO} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
       fi
   }
-}
