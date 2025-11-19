@@ -17,7 +17,7 @@ services:
       - ./logs:/root/logs
     networks:
       netcaronte:
-        ipv4_address: ${IP_WEB}
+        ipv4_address: ${IP}
 networks:
   netcaronte:
     driver: bridge
