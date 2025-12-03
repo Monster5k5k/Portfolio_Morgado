@@ -8,10 +8,10 @@ configurar_ssh() {
   # 2. Cambiar el puerto de SSH
   sed -i 's/#Port.*/Port '$PORT_SSH'/' /etc/ssh/sshd_config
 
-  service ssh restart
-  #exec /usr/sbin/sshd -D & #dejar el ssh en background /(2plano)
+  mkdir -p /run/sshd
   mkdir /home/${USUARIO}/.ssh
   cat /root/admin/base/common/id_rsa.pub >> /home/${USUARIO}/.ssh/authorized_keys
+  exec /usr/sbin/sshd -D & #dejar el ssh en background /(2plano)
 }
 
   config_sudoers () {
