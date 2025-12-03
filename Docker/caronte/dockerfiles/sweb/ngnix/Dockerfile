@@ -12,12 +12,12 @@ RUN chmod -R 755 /var/www/html
 #instalamos el ngnix/apache en usuario www-data
 #el propietario de /var(www(/html debe ser www-data
 
-RUN mkdor -p /var/log/ngnix
+RUN mkdir -p /var/log/ngnix
 EXPOSE 80
 
 RUN mkdir -p /root/admin/sweb/nginx
 WORKDIR /root/admin/sweb/nginx
-COPY ./dockerfiles/sweb/nginx .
+COPY ./dockerfiles/sweb/ngnix .
 RUN chmod +x /root/admin/sweb/nginx/admin/start.sh
 
 ENTRYPOINT ["./admin/start.sh"]
