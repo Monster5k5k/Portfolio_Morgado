@@ -1,0 +1,28 @@
+services:
+  web:
+    build:
+      context: /home/linas/portfolio/Docker/caronte/
+      dockerfile: ./dockerfiles/base/ubbase 
+     # args: #Variables de DFILE para la construcción de las imagenes 
+     #   - USUARIO=linas
+    container_name: ${CONTAINER_NAME}
+    # environment:
+    #   - USUARIO=linas
+    #   - PASSWORD=1234
+    image: linas/ubbase
+    ports:
+      - ${PORT_SSH}:${PORT_SSH}
+    env_file:
+      - ./.env
+    volumes:
+      - ./logs:/root/logs
+    networks:
+      netcaronte:
+        ipv4_address: ${IP}
+networks:
+  netcaronte:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+       - subnet: ${SUBNET}
