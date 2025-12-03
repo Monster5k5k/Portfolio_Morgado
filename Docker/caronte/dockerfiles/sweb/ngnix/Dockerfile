@@ -15,4 +15,9 @@ RUN chmod -R 755 /var/www/html
 RUN mkdor -p /var/log/ngnix
 EXPOSE 80
 
-RUN mkdir
+RUN mkdir -p /root/admin/sweb/nginx
+WORKDIR /root/admin/sweb/nginx
+COPY ./dockerfiles/sweb/nginx .
+RUN chmod +x /root/admin/sweb/nginx/admin/start.sh
+
+ENTRYPOINT ["./admin/start.sh"]
