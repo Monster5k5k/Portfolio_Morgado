@@ -1,5 +1,5 @@
 # Usamos una imagen real de Node, no la de Nginx
-FROM node:18-alpine
+FROM node:22-alpine
 
 # Instalamos bash y ssh por si quieres entrar luego
 RUN apk add --no-cache bash openssh
