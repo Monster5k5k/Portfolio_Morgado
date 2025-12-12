@@ -19,7 +19,7 @@ services:
     volumes:
       - ./logs:/root/logs
       # Subimos 2 niveles para encontrar tu código: deploy -> pnode -> proyecto/mi-web-tarkov
-      - ../../mi-web-tarkov:/app
+      #- ../../mi-web-tarkov:/app
       
     networks:
       netcaronte:

@@ -21,4 +21,4 @@ COPY proyecto/mi-web-tarkov/ .
 EXPOSE 5173 22
 
 # Arrancamos Vite aceptando conexiones externas
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev"]
