@@ -9,6 +9,7 @@ services:
     # environment:
     #   - USUARIO=linas
     #   - PASSWORD=1234
+    image: linas/swebngnix
     ports:
       - ${PORT_SSH}:${PORT_SSH}
     env_file:
