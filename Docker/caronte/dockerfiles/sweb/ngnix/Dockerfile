@@ -1,4 +1,4 @@
-FROM mortviva7/ubbase
+FROM linas/ubbase
 
 
 USER root
