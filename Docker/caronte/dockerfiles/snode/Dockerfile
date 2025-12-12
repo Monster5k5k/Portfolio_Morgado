@@ -1,24 +1,23 @@
-# Usamos una imagen real de Node, no la de Nginx
-FROM node:22-alpine
+# 1. Heredamos de TU Nginx (que acabamos de crear en el paso 1)
+FROM linas/swebngnix
 
-# Instalamos bash y ssh por si quieres entrar luego
-RUN apk add --no-cache bash openssh
+# 2. Instalamos Node.js (Versión actual para que funcione Vite)
+RUN apt update && apt install -yq curl ca-certificates && \
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt install -yq nodejs
 
-# Creamos la carpeta de la app
-WORKDIR /app
+# 3. Preparamos carpetas
+RUN mkdir -p /root/admin/node
+# Adaptamos la ruta a TU proyecto
+RUN mkdir -p /root/admin/node/proyecto/mi-web-tarkov
 
-# Copiamos los archivos de configuración desde la ruta del contexto
-# (Docker lo busca en Docker/caronte/proyecto/mi-web-tarkov/)
-COPY proyecto/mi-web-tarkov/package*.json ./
+WORKDIR /root/admin/node
 
-# Instalamos las dependencias
-RUN npm install
+# 4. Copiamos TU código fuente
+COPY ./proyecto/mi-web-tarkov/ /root/admin/node/proyecto/mi-web-tarkov
 
-# Copiamos el resto del código de la web
-COPY proyecto/mi-web-tarkov/ .
+# 5. Copiamos el script de arranque de esta capa
+COPY ./dockerfiles/snode/admin/start.sh .
+RUN chmod +x ./start.sh
 
-# Exponemos el puerto de Vite (5173) y el de SSH (22)
-EXPOSE 5173 22
-
-# Arrancamos Vite aceptando conexiones externas
-CMD ["npm", "run", "dev"]
+ENTRYPOINT [ "./start.sh" ]
